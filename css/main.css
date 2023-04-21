@@ -1,0 +1,146 @@
+/* 전체 선택자 */
+*{margin:0; padding:0;}
+li {list-style: none;}
+a {text-decoration: none; color: #212121;}
+div, header, section, footer, li {
+    box-sizing: border-box;
+}
+img {width: 100%;}
+/* -> 이렇게 공통된 부분은(태그) 미리 넣어놓고 시작!! */
+
+.wrap { width: 1200px; margin:0 auto;}
+/* .wrap은 body다음으로 전체 영역을 감싸는 부모라서 앞에 .wrap굳이 안써도 된다. */
+header {
+    width: 100%;
+    height: 140px;
+    /* overflow:hidden; 부모 영역의 header가 떨어지는것을 고치는 방법!!
+       아래에 객체가 생겼을때 중첩현상이 사라지는 경우가 있다!! 이럴땐 그냥 지워주면 됨 */
+ }
+header .logo {
+    margin-top: 55px;
+    float:left; /*로고 옆에 메뉴 나란히 오게하기*/
+}
+header nav {
+    float:left; /*로고 옆에 메뉴 나란히 오게하기*/
+    margin-top: 60px;
+    margin-left: 160px;
+}
+/* 주메뉴 */
+header nav > ul > li {
+    float:left;
+    margin:0 30px; /*위&아래:여백 0, 왼쪽&오른쪽:여백 40*/
+    position:relative;
+}
+header nav > ul > li > a {
+    font-size:15px;
+    /* !!!!!!!!!!주메뉴와 서브메뉴 사이 떨어뜨릴 때 padding으로 사용!!!!!!!!!!! */
+    padding-bottom: 20px;
+    display:block; /* a태그 -> 인라인 요소!! 패딩이 적용 안될땐 인라인 요소라 그렇구나~! 블록 요소로
+                      변경해주면 된다! */
+}
+/* 주메뉴에 마우스 오버 했을 때 글자색 변경 -> 자식 선택자(>)*/
+header nav > ul > li:hover > a {
+    color:#888;
+}
+/* 서브메뉴 영역 */
+header nav .sub {
+    background-color: #333;
+    padding: 20px;
+    /* margin-top: 20px; */
+    /* 서브메뉴에 margin-top을 쓰면 주메뉴에서 마우스 아래로 내리는 순간 서브메뉴 사라짐!!!!
+       주메뉴에 padding-bottom을 줘야 한다!!!!!!!!!!!!!*/
+    display:none; /*안보임*/
+
+    /* 가로 길이가 없을때 가운데 정렬시 사용하는 공식(아래!!) */
+    position:absolute; /*얘만쓰면 브라우저가 기준 가운데 정렬 제대로 정렬하려면 부모에 relative!!*/
+    left:50%;
+    transform:translateX(-50%);
+}
+header nav .sub li a {
+    color:#fff;
+    font-size: 13px;
+    padding:7px;
+    display: block; /*패딩이 적용 안될땐 인라인 요소라 그렇구나~! 블록 요소로
+                      변경해주면 된다!*/
+}
+/* 서브메뉴에 마우스 오버 했을 때 주메뉴는 글자색 유지하면서
+   서브 메뉴만 글자색 변경 */
+header nav .sub li a:hover {
+    color:#888;
+}
+/* 주메뉴에 마우스 오버 했을 때 서브메뉴 나타남 */
+header nav > ul > li:hover .sub {
+    display: block;
+}
+header .top_menu {
+    float: right;
+    margin-top: 60px;
+}
+header .top_menu ul li {
+    float: left;
+    margin: 0 8px;
+}
+header .top_menu ul li a {
+    font-size: 13px;
+}
+header .top_menu ul li a:hover {
+    color:#aaa;
+}
+section {
+    overflow: hidden;
+}
+section .banner {
+    width: 100%;
+    margin-top: 60px;
+}
+section .banner ul li {
+    width:388px;
+    margin-right:18px;
+    float:left; /*이미지 가로로 나열 !!!! li에 float를 했기 때문에 사진 순서
+                  저렇게 나옴!!!! -> box에다 float를 한게 아님!! */
+}
+section .banner ul li:last-child {
+    margin-right: 0; /*마지막 마진때문에 사진 아래로 떨어지는거 해결*/
+}
+section .banner ul li .box {
+    margin-bottom: 40px;
+    padding:10px;
+    background-color: #eee;
+}
+section .banner ul li .box .des {
+    padding: 15px;
+    margin-top: 10px;
+}
+section .banner ul li .box h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+section .banner ul li .box p {
+    font-size: 13px;
+    line-height: 22px;
+    text-align: justify;
+}
+footer {
+    clear:both; /*float 해제*/
+    width:100%;
+    background-color: #f8f8f8;
+    margin-top:100px;
+    padding:60px 0 20px;
+    overflow: hidden;
+    /* footer가 자식객체의 높이를 인식하도록 설정 */
+    overflow:hidden;
+}
+/* 직속 자식 선택자 */
+footer > div {
+    float:left;
+    margin:0 40px;
+    font-size: 13px;
+}
+footer div div {margin-bottom:30px;}
+footer div h4 { font-weight: normal; margin-bottom: 20px;}
+footer div p {line-height:24px;}
+footer div address {font-style: normal; line-height: 24px;}
+footer ul li {padding:7px 0}
+footer ul li:nth-child(3) a {font-weight: bold;}
+footer ul li:hover a {text-decoration: underline;}
+footer div .tel {font-size:16px;}
